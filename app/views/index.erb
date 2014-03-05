@@ -1,0 +1,27 @@
+<div class="container">
+  <h1>Time Traveling Tweets:</h1>
+
+  <%
+    # In our real-world application, this is not what we want. Instead, we should
+    # be checking to see if there is currently a user logged-in, and if there is,
+    # we should show her a form that will allow her to send a tweet. If there is no
+    # user logged-in, we should show the sign-in button.
+  %>
+  <% if session[:user] %>
+    <div>
+      <form action='/tweet' method='post' id='submit_tweet'>
+        <input type='text' name='tweet' id='tweet_text' placeholder='Tweet Content'>
+        <input type='date' name='date'>
+        <input type='time' name='time'>
+        <input type='submit' value='Tweeeeeet!'>
+      </form>
+      <div id='ajax-message'></div>
+      <p>
+        <button><a href="/sign_out">Sign Out</a></button>
+      </p>
+    </div>
+  <% else %>
+    <button><a href="/sign_in">Sign In with Twitter</a></button>
+  <% end %>
+
+</div>
